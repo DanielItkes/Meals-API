@@ -13,7 +13,7 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           context: .
-          file: ./Dockerfile.setport
+          file: ./Dockerfile
           tags: meals-api:latest
           outputs: type=docker,dest=/tmp/image.tar
 
@@ -31,6 +31,7 @@ jobs:
           fi
 
       - name: Upload artifact
+        if: always()
         uses: actions/upload-artifact@v3
         with:
           name: meals-api
