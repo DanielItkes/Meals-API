@@ -30,9 +30,15 @@ jobs:
             echo "Image not able to be built" >> build_result.txt
           fi
 
-      - name: Upload artifact
-        if: always()
+      - name: Upload image artifact
         uses: actions/upload-artifact@v3
         with:
           name: meals-api
+          path: /tmp/image.tar
+
+      - name: Upload result file
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: meals-api-build-result.txt
           path: build_result.txt
