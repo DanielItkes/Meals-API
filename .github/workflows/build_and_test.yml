@@ -52,7 +52,7 @@ jobs:
     - name: Load Docker images from previous workflows
       run: docker load --input meals-api/image.tar
     - name: Load previous log file
-      run: docker load --input log.txt
+      run: docker load --input log.txt/log.txt
     - name: Check meals-api image is loaded
       run: docker image ls
     - name: Run image in container
