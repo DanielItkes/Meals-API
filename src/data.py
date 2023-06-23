@@ -12,8 +12,6 @@ class DataCollection:
         self.dishes = {}
 
     def reset_db(self):
-        if sys.argv[-1] != 'tests':
-            return
 
         self.meal_id_counter = 0
         self.dish_id_counter = 0
