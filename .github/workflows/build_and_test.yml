@@ -40,7 +40,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v3
         with:
-          name: log.txt
+          name: log-file
           path: log.txt
   test:
     needs: build
@@ -92,6 +92,6 @@ jobs:
       if: always()
       uses: actions/upload-artifact@v3
       with:
-          name: log.txt
-          path: log.txt
+        name: log-file
+        path: log.txt
     
