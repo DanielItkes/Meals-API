@@ -48,14 +48,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     #1. download previous artifacts and run image in a container
+    - name: Checkout
+      uses: actions/checkout@v3
     - name: Download artifact
       uses: actions/download-artifact@v3
     - name: Load Docker images from previous workflows
       run: docker load --input meals-api/image.tar
-    - name: debug
-      run: |
-        ls 
-        ls log.txt
     - name: Check meals-api image is loaded
       run: docker image ls
     - name: Run image in container
@@ -66,13 +64,11 @@ jobs:
       run: |
         CONTAINER_NAME="meals-container"
         if [ "$( docker container inspect -f '{{.State.Running}}' meals-container )" = "true" ]; then
-          echo "Container up and running" >> log.txt
+          echo "Container up and running" >> log.txt/log.txt
         else
-          echo "Container failed to run" >> log.txt
+          echo "Container failed to run" >> log.txt/log.txt
         fi
     #2. set up python and pytest environment
-    - name: Checkout
-      uses: actions/checkout@v3
     - name: Set up Python
       uses: actions/setup-python@v4
     - name: Install dependencies
