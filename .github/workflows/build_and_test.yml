@@ -51,10 +51,11 @@ jobs:
       uses: actions/download-artifact@v3
     - name: Load Docker images from previous workflows
       run: docker load --input meals-api/image.tar
-    # - name: Download a single artifact
-    #   uses: actions/download-artifact@v3
-    #   with:
-    #     name: log.txt
+    - name: Load previous log file
+      run: docker load --input log.txt/log.txt.tar
+    - name: Extract log.txt
+      run: |
+        tar -xvf log-artifact/log.txt.tar.gz
     - name: Check meals-api image is loaded
       run: docker image ls
     - name: Run image in container
@@ -65,9 +66,9 @@ jobs:
       run: |
         CONTAINER_NAME="meals-container"
         if [ "$( docker container inspect -f '{{.State.Running}}' meals-container )" = "true" ]; then
-          echo "Container up and running" >> log.txt/log.txt
+          echo "Container up and running" >> log.txt
         else
-          echo "Container failed to run" >> log.txt/log.txt
+          echo "Container failed to run" >> log.txt
         fi
     #2. set up python and pytest environment
     - name: Checkout
@@ -91,16 +92,13 @@ jobs:
       with:
         name: assn3_test_results.txt
         path: tests/assn3_test_results.txt
-    - name: debug
-      run: |
-        ls
-        ls log.txt
+    
     - name: Write test result to log file
       run: |
         if grep -q "9 passed" tests/assn3_test_results.txt; then
-          echo "tests succeeded" >> log.txt/log.txt
+          echo "tests succeeded" >> log.txt
         else
-          echo "tests failed" >> log.txt/log.txt
+          echo "tests failed" >> log.txt
         fi
 
     - name: Upload updated log file
