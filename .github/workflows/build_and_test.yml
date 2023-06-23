@@ -50,7 +50,7 @@ jobs:
     - name: Download artifact
       uses: actions/download-artifact@v3
     - name: Load Docker images from previous workflows
-      run: docker load --input meals-api
+      run: docker load --input meals-api/image.tar
     - name: Check meals-api image is loaded
       run: docker image ls
     - name: Run image in container
