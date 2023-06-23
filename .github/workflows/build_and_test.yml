@@ -56,7 +56,7 @@ jobs:
       uses: actions/download-artifact@v3
       with:
         name: log.txt
-        path: .
+        path: ./
     - name: Check meals-api image is loaded
       run: docker image ls
     - name: Run image in container
