@@ -88,6 +88,10 @@ jobs:
         name: assn3_test_results.txt
         path: tests/assn3_test_results.txt
     #4. upload new log file
+    - name: ls for testing
+      if: always()
+      run: ls
+      
     - name: Upload updated log file
       if: always()
       uses: actions/upload-artifact@v3
