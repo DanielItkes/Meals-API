@@ -22,6 +22,7 @@ jobs:
         run: |
           datetime=$(date +"%Y-%m-%d %H:%M:%S")
           names="Daniel, Omer, Shachar"
+          echo $dateti
           echo $datetime >> log.txt
           echo $names >> log.txt
           if [ -f /tmp/image.tar ]; then
@@ -52,10 +53,7 @@ jobs:
     - name: Load Docker images from previous workflows
       run: docker load --input meals-api/image.tar
     - name: Load previous log file
-      run: docker load --input log.txt/log.txt.tar
-    - name: Extract log.txt
-      run: |
-        tar -xvf log-artifact/log.txt.tar.gz
+      run: docker load --input log.txt/log.txt
     - name: Check meals-api image is loaded
       run: docker image ls
     - name: Run image in container
