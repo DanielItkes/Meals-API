@@ -40,7 +40,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v3
         with:
-          name: log.txt
+          name: log-file
           path: log.txt
   test:
     needs: build
@@ -60,7 +60,7 @@ jobs:
     - name: Write container result to log file
       run: |
         CONTAINER_NAME="meals-container"
-        if [ docker ps -q -f name="meals-container" ]; then
+        if [ "$( docker container inspect -f '{{.State.Running}}' meals-container )" = "true" ]; then
           echo "Container up and running" >> log.txt
         else
           echo "Container failed to run" >> log.txt
