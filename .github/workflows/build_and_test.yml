@@ -92,9 +92,9 @@ jobs:
         name: assn3_test_results.txt
         path: tests/assn3_test_results.txt
     - name: debug
-        run: |
-          ls
-          ls log.txt
+      run: |
+        ls
+        ls log.txt
     - name: Write test result to log file
       run: |
         if grep -q "9 passed" tests/assn3_test_results.txt; then
