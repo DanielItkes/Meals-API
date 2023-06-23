@@ -64,6 +64,7 @@ jobs:
           echo "Container up and running" >> log.txt
         else
           echo "Container failed to run" >> log.txt
+        fi
     #2. set up python and pytest environment
     - name: Checkout
       uses: actions/checkout@v3
