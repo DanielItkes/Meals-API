@@ -92,7 +92,6 @@ jobs:
         name: assn3_test_results.txt
         path: tests/assn3_test_results.txt
     - debug:
-        msg: "test results uploaded"
         run: |
           ls
           ls log.txt
