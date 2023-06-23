@@ -40,7 +40,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v3
         with:
-          name: log-file
+          name: log.txt
           path: log.txt
   test:
     needs: build
@@ -61,9 +61,9 @@ jobs:
       run: |
         CONTAINER_NAME="meals-container"
         if [ "$( docker container inspect -f '{{.State.Running}}' meals-container )" = "true" ]; then
-          echo "Container up and running" >> log.txt
+          echo "Container up and running" >> log.txt/log.txt
         else
-          echo "Container failed to run" >> log.txt
+          echo "Container failed to run" >> log.txt/log.txt
         fi
     #2. set up python and pytest environment
     - name: Checkout
@@ -99,6 +99,6 @@ jobs:
       if: always()
       uses: actions/upload-artifact@v3
       with:
-        name: log-file
+        name: log.txt
         path: log.txt
     
