@@ -47,16 +47,15 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     steps:
-    #1. download image and run it in a container
+    #1. download previous artifacts and run image in a container
     - name: Download artifact
       uses: actions/download-artifact@v3
     - name: Load Docker images from previous workflows
       run: docker load --input meals-api/image.tar
-    - name: Download log file
-      uses: actions/download-artifact@v3
-      with:
-        name: log.txt
-        path: ./
+    - name: debug
+      run: |
+        ls 
+        ls log.txt
     - name: Check meals-api image is loaded
       run: docker image ls
     - name: Run image in container
