@@ -200,6 +200,6 @@ class MealByName(Resource):
 class ResetDB(Resource):
     global col
 
-    def get(self):
+    def post(self):
         col.reset_db()
         return ResponseSerializer(1, 200).serialize()
