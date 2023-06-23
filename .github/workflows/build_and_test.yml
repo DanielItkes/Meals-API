@@ -92,9 +92,9 @@ jobs:
     - name: Write test result to log file
       run: |
         if grep -q "9 passed" tests/assn3_test_results.txt; then
-          echo "tests succeeded" >> log.txt
+          echo "tests succeeded" >> log.txt/log.txt
         else
-          echo "tests failed" >> log.txt
+          echo "tests failed" >> log.txt/log.txt
         fi
 
     - name: Upload updated log file
@@ -102,5 +102,5 @@ jobs:
       uses: actions/upload-artifact@v3
       with:
         name: log.txt
-        path: log.txt
+        path: log.txt/log.txt
     
