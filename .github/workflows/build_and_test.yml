@@ -90,8 +90,8 @@ jobs:
     #4. upload new log file
     - name: Upload updated log file
       if: always()
-        uses: actions/upload-artifact@v3
-        with:
+      uses: actions/upload-artifact@v3
+      with:
           name: log.txt
           path: log.txt
     
