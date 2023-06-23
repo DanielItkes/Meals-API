@@ -51,12 +51,6 @@ jobs:
       uses: actions/download-artifact@v3
     - name: Load Docker images from previous workflows
       run: docker load --input meals-api/image.tar
-    - name: print debug
-      run: |
-        echo "debug"
-        ls
-        ls log.txt
-    
     - name: Load previous log file
       run: docker load --input log.txt/log.txt
     - name: Check meals-api image is loaded
