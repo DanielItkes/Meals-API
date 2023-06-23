@@ -91,7 +91,7 @@ jobs:
       with:
         name: assn3_test_results.txt
         path: tests/assn3_test_results.txt
-    - debug:
+    - name: debug
         run: |
           ls
           ls log.txt
