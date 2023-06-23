@@ -88,9 +88,6 @@ jobs:
         name: assn3_test_results.txt
         path: tests/assn3_test_results.txt
     #4. upload new log file
-    - name: log for testing
-      run: echo "hi" >> log.txt
-
     - name: ls for testing
       if: always()
       run: ls
