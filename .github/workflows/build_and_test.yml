@@ -90,6 +90,7 @@ jobs:
         path: tests/assn3_test_results.txt
     
     - name: Write test result to log file
+      if: always()  # always perform this step even if tests fail, to see results
       run: |
         if grep -q "9 passed" tests/assn3_test_results.txt; then
           echo "tests succeeded" >> log.txt/log.txt
