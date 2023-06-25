@@ -20,7 +20,7 @@ jobs:
       - name: Write build result to file
         if: always()
         run: |
-          datetime=$(date --Iminutes)
+          datetime=$(date -Iminutes)
           names="Daniel Itkes, Omer Geva, Shachar Weinmann"
           echo $datetime >> log.txt
           echo $names >> log.txt
