@@ -95,9 +95,9 @@ jobs:
       if: always()  # always perform this step even if tests fail, to see results
       run: |
         if grep -q "FAILED" tests/assn3_test_results.txt; then
-          echo "tests failed" >> $GITHUB_WORKSPACE/log.txt
+          echo "tests failed" >> log.txt
         else
-          echo "tests succeeded" >> $GITHUB_WORKSPACE/log.txt
+          echo "tests succeeded" >> log.txt
         fi
 
     - name: Upload updated log file
