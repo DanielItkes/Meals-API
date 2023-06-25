@@ -134,7 +134,7 @@ jobs:
         pip install jq
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
 
-    - name: Upload response file
+    - name: Upload reponse file
       if: always()
       uses: actions/upload-artifact@v3
       with:
