@@ -57,7 +57,7 @@ jobs:
 
     - name: Run image in container
       run: docker run --name meals-container -p8000:8000 meals-api &
-      
+
     - name: Write container result to log file
       run: |
         CONTAINER_NAME="meals-container"
