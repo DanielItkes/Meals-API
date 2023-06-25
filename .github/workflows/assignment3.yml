@@ -126,9 +126,10 @@ jobs:
         python -m pip install --upgrade pip
         pip install pytest # not using yet lint checker like ruff
         pip install requests
-        pip install curl
-        pip install jq
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+  
+    - name: Install curl and jq
+      run: sudo apt-get install -y curl jq
 
     - name: Submit queries and record responses
       run: |
