@@ -105,4 +105,33 @@ jobs:
       with:
         name: Logs
         path: Logs/log.txt
+
+  query:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Load Docker images from previous workflows
+        run: docker load --input ./image.tar
+
+      - name: Run image in container
+        run: docker run --name meals-container -d -p8000:8000 meals-api
+
+      - name: Install curl and jq
+        run: sudo apt-get install curl jq
+
+      - name: Issue requests and write responses
+        run: |
+          while read dish; do
+            resp=$(curl -s -X POST http://localhost:8000/dishes -d "{\"name\":\"$dish\"}" -H "Content-Type: application/json")
+            echo "$resp" | jq -r '"\(.name) contains \(.cal) calories, \(.sodium) mgs of sodium, and \(.sugar) grams of sugar"' >> response.txt
+          done <query.txt
+
+      - name: Upload response file
+        uses: actions/upload-artifact@v3
+        with:
+          name: Responses
+          path: response.txt
     
