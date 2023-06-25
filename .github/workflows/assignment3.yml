@@ -42,7 +42,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: Upload logs artifact
-          path: logs/log.txt
+          path: logs
   
   test:
     needs: build
