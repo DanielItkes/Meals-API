@@ -135,8 +135,7 @@ jobs:
       run: |
         while read dish; do
           # Post the dish and capture the response
-          response=$(curl -s -X POST -H "Content-Type: application/json" -d "{\"name\":\"$dish\"}" http://localhost:8000/dishes)
-          id=$(echo $response | jq -r '.ID')
+          id=$(curl -s -X POST -H "Content-Type: application/json" -d "{\"name\":\"$dish\"}" http://localhost:8000/dishes)
 
           # Get the detailed information using the received ID
           detailed_response=$(curl -s -X GET http://localhost:8000/dishes/$id)
