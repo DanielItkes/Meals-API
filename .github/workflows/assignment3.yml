@@ -40,7 +40,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v3
         with:
-          name: Logs
+          name: log.txt
           path: logs.txt
   
   test:
