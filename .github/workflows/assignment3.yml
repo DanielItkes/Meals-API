@@ -40,7 +40,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v3
         with:
-          name: log.txt
+          name: Logs
           path: logs.txt
   
   test:
@@ -63,9 +63,9 @@ jobs:
       run: |
         CONTAINER_NAME="meals-container"
         if [ "$( docker container inspect -f '{{.State.Running}}' meals-container )" = "true" ]; then
-          echo "Container up and running" >> log.txt
+          echo "Container up and running" >> Logs/log.txt
         else
-          echo "Container failed to run" >> log.txt
+          echo "Container failed to run" >> Logs/log.txt
         fi
 
     - name: Set up Python
@@ -94,9 +94,9 @@ jobs:
       if: always()  # always perform this step even if tests fail, to see results
       run: |
         if grep -q "FAILED" tests/assn3_test_results.txt; then
-          echo "tests failed" >> log.txt
+          echo "tests failed" >> Logs/log.txt
         else
-          echo "tests succeeded" >> log.txt
+          echo "tests succeeded" >> Logs/log.txt
         fi
 
     - name: Upload updated log file
@@ -104,5 +104,5 @@ jobs:
       uses: actions/upload-artifact@v3
       with:
         name: Logs
-        path: log.txt
+        path: Logs/log.txt
     
