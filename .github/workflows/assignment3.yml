@@ -155,3 +155,9 @@ jobs:
       with:
         name: Responses
         path: response.txt
+
+    - name: Remove unused artifacts
+      if: always()
+      uses: geekyeggo/delete-artifact@v2
+      with:
+          name: meals-api
