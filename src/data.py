@@ -32,7 +32,7 @@ class DataCollection:
 
     def add_dish(self, dish):
         id = self.__generate_id('dish')
-        dish['id'] = id
+        dish['ID'] = id
         self.dishes[id] = dish
         return id
         
@@ -42,7 +42,7 @@ class DataCollection:
 
     def add_meal(self, meal):
         id = self.__generate_id('meal')
-        meal['id'] = id
+        meal['ID'] = id
         self.meals[id] = meal
         return id
         
