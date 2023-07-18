@@ -1,8 +1,8 @@
 FROM python:alpine3.17
 
-WORKDIR ./app
+# WORKDIR ./app
 
-COPY . .
+# COPY . .
 
 RUN pip install -r requirements.txt
 
