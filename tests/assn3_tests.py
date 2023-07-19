@@ -27,7 +27,7 @@ def test_dishes_valid_get_id():
 
     global dishIDs
     response = connectionController.http_get(f"dishes/{dishIDs[0]}")
-    assert_status_code(response, 200)
+    assert_status_code(response, -12)
     assert_range(response.json()['sodium'], 0.9, 1.1)
 
 def test_dishes_valid_get():
