@@ -29,11 +29,11 @@ jobs:
           
       - name: Log successful build
         if: success()
-        run: echo "image successfully built" >> log.txt
+        run: echo "Image successfully built" >> log.txt
         
       - name: Log failed build
         if: failure()
-        run: echo "image not able to be built" >> log.txt
+        run: echo "Image not able to be built" >> log.txt
         
       - name: Upload image artifact
         uses: actions/upload-artifact@v3
