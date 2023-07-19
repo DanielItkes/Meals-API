@@ -24,7 +24,7 @@ jobs:
           names="Daniel Itkes, Omer Geva, Shachar Weinmann"
           echo $datetime >> log.txt
           echo $names >> log.txt
-          if [[ "$(docker images -q)" ]]; then
+          if [[ "$(docker images -q meals-api:latest)" ]]; then
             echo "Image successfully built" >> log.txt
           else
             echo "Image not able to be built" >> log.txt
